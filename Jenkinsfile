@@ -1,5 +1,5 @@
 #!/groovy
-def dockerImageRepo = ''
+def dockerImageRepo = 'gatewaytech/gatewaytech-ui'
 def dockerImageTag
 def dockerImage
 def dockerRegistry = 'hub.docker.com'
@@ -17,10 +17,16 @@ pipeline
 				deleteDir()
 				echo "the build number is ${currentBuild.number}"
 				echo 'Cleanup Done'
-				
+				script 
+				{
+
+					dockerImageTag="$dockerImageRepo"+":"+"$BUILD_NUMBER"
+					echo "Created a Tag for uploading an Image to Registry based on Build_Number : $dockerImageTag"
+				}
 			}
 		}
-		
+
+
 		stage('CheckOut latest Code')
 		{
 			steps
@@ -59,12 +65,9 @@ pipeline
 				{
 					sh 'docker login --username="anandgit71" --password="anandgit12" ${dockerRegistry}'
 					dockerImage.push()
-					// sh 'docker rmi $(docker images -a -q)'
 					sh 'docker images'
-					// sh 'docker rmi $dockerImage'
 				}
 			}
 		}
-
 	}
 }

@@ -69,6 +69,18 @@ pipeline
 				}
 			}
 		}
+		
+		stage('Deploy the Flask App')
+		{
+			steps
+			{
+				script
+				{
+					sh 'docker rm -f Flask-App'
+					sh 'docker run -t -d -p 5000:5000 --name Flask-App gatewaytech/gatewaytech-ui:$BUILD_NUMBER'
+				}
+			}
+		}
 	}
 }
 

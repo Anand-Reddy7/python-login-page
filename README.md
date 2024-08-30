@@ -43,7 +43,7 @@ GRANT ALL PRIVILEGES ON *.* TO 'root'@'%';
 FLUSH PRIVILEGES;
 ```
 
-# ( Server -02 ) Python Installation on RHEL 8.4
+# ( Server -02 ) Python Installation on RHEL 9.4
 -----------------------------------------------
 # pre-required softwares
 ```

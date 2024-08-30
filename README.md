@@ -1,12 +1,14 @@
-# (Server-01 ) Install MySQL on DataBase Server
+# (Server-01 ) Install MySQL on DataBase Server on RHEL 9.4
 
 ```
 yum update -y
-dnf -y install @mysql
-systemctl enable mysqld.service
-systemctl start mysqld.service
-systemctl status mysqld.service
-mysql_secure_installation
+yum install wget git -y
+wget https://dev.mysql.com/get/mysql84-community-release-el9-1.noarch.rpm
+rpm -i mysql84-community-release-el9-1.noarch.rpm 
+dnf install -y mysql-community-server
+systemctl start mysqld && systemctl enable mysqld
+cat /var/log/mysqld.log | grep "password"  # get the Password 
+mysql_secure_installation # Reset the Password here 
 ```
 
 # Create a DB and table

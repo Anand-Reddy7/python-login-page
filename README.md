@@ -47,31 +47,15 @@ FLUSH PRIVILEGES;
 -----------------------------------------------
 # pre-required softwares
 ```
-yum install wget,make,git -y
+yum install wget,git -y
 
-sudo dnf install wget yum-utils make gcc openssl-devel bzip2-devel libffi-devel zlib-devel
-
-wget https://www.python.org/ftp/python/3.9.6/Python-3.9.6.tgz 
-
-tar xzf Python-3.9.6.tgz 
-
-cd Python-3.9.6 
-
-sudo ./configure --with-system-ffi --with-computed-gotos --enable-loadable-sqlite-extensions
-
-sudo make -j ${nproc} 
-sudo make altinstall 
-```
-
-# Verify Python
-```
-python3.9 -V  
 ```
 
 # Other Pre-requirements
 ```
 yum -y install gcc gcc-c++ kernel-devel
 yum -y install mysql-devel openssl-devel
+yum -y install python3-devel
 ```
 
 # Get the code from GitHub
